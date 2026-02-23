@@ -133,21 +133,23 @@ select:focus {
 }
 
 .preset-btn {
-    background: var(--bg-glass);
+    background: rgba(0, 0, 0, 0.2);
     border: 1px solid var(--border-light);
-    color: var(--text-main);
-    padding: 8px;
+    color: var(--text-dim);
+    padding: 10px 8px;
     border-radius: 6px;
-    font-size: 11px;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 500;
     cursor: pointer;
-    transition: 0.2s;
+    transition: all 0.2s ease;
 }
 
 .preset-btn:hover {
     border-color: var(--accent);
-    background: rgba(94, 106, 210, 0.1);
+    color: var(--text-main);
+    background: rgba(94, 106, 210, 0.15);
     transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .export-area {
