@@ -1,4 +1,3 @@
-/* General Styles & Variables */
 :root {
     --bg-dark: #0f111a;
     --bg-panel: rgba(26, 29, 41, 0.7);
@@ -46,7 +45,6 @@ body {
     backdrop-filter: blur(20px);
 }
 
-/* Sidebar */
 .sidebar {
     width: 280px;
     background: rgba(15, 17, 26, 0.6);
@@ -192,7 +190,6 @@ select:focus {
     transform: translateY(-2px);
 }
 
-/* Main Content */
 .main-content {
     flex: 1;
     display: flex;
@@ -215,7 +212,6 @@ select:focus {
     align-content: start;
 }
 
-/* Form Controls */
 .setting-card {
     background: var(--bg-glass);
     border: 1px solid var(--border-light);
@@ -234,7 +230,6 @@ select:focus {
     color: var(--text-main);
 }
 
-/* Toggles */
 .toggle-wrapper {
     display: flex;
     justify-content: space-between;
@@ -286,7 +281,6 @@ input:checked+.slider:before {
     transform: translateX(20px);
 }
 
-/* Range Sliders */
 .range-container {
     display: flex;
     flex-direction: column;
@@ -325,7 +319,6 @@ input[type=range]::-webkit-slider-runnable-track {
     border-radius: 2px;
 }
 
-/* Dropdowns / Keybinds */
 .input-field {
     width: 100%;
     background: rgba(0, 0, 0, 0.2);

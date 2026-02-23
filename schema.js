@@ -1,5 +1,4 @@
 const schemas = {
-    // Matcha (Beta) Schema map based on test configg.cfg
     "matcha_beta": {
         "aimbot": [
             { id: "aimbot", label: "Enable Aimbot", type: "toggle", default: true },

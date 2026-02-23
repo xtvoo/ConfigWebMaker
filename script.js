@@ -1,4 +1,3 @@
-// Get Elements
 const externalSelect = document.getElementById("external-select");
 const settingsContainer = document.getElementById("settings-container");
 const tabsButtons = document.querySelectorAll(".tab-btn");
@@ -7,7 +6,6 @@ const exportBtn = document.getElementById("export-btn");
 const configNameInput = document.getElementById("config-name");
 const presetBtns = document.querySelectorAll(".preset-btn");
 
-// Preset definitions map
 const presets = {
     legit: {
         aimbot_range: 100, fov: 55, smoothness_x: 22.0, smoothness_y: 22.0,
@@ -31,16 +29,13 @@ const presets = {
     }
 };
 
-// Global state holding current values for the selected external
 let currentValues = {};
 let currentExternal = externalSelect.value;
 let currentTab = "aimbot";
 
-// Initialize UI
 function init() {
     loadExternal(currentExternal);
 
-    // Event Listeners for tabs
     tabsButtons.forEach(btn => {
         btn.addEventListener("click", (e) => {
             tabsButtons.forEach(b => b.classList.remove("active"));
@@ -51,21 +46,17 @@ function init() {
         });
     });
 
-    // Event Listener for external dropdown change
     externalSelect.addEventListener("change", (e) => {
         currentExternal = e.target.value;
         loadExternal(currentExternal);
     });
 
-    // Event Listener for export
     exportBtn.addEventListener("click", exportConfig);
 
-    // Event Listeners for presets
     presetBtns.forEach(btn => {
         btn.addEventListener("click", (e) => {
             const presetName = e.target.getAttribute("data-preset");
             if (presets[presetName]) {
-                // Apply preset values over current ones
                 Object.keys(presets[presetName]).forEach(key => {
                     if (currentValues[key] !== undefined) {
                         currentValues[key] = presets[presetName][key];
@@ -77,12 +68,10 @@ function init() {
     });
 }
 
-// Load the schema for the selected external and set default values
 function loadExternal(externalKey) {
-    currentValues = {}; // Reset values
+    currentValues = {};
     const schema = schemas[externalKey];
 
-    // Seed defaults across all tabs so our full object has everything
     for (const tab in schema) {
         schema[tab].forEach(setting => {
             currentValues[setting.id] = setting.default;
@@ -92,7 +81,6 @@ function loadExternal(externalKey) {
     renderSettings();
 }
 
-// Render the UI for the current tab
 function renderSettings() {
     settingsContainer.innerHTML = "";
     const schema = schemas[currentExternal][currentTab];
@@ -155,23 +143,18 @@ function renderSettings() {
     });
 }
 
-// Export the JSON config
 function exportConfig() {
     let name = configNameInput.value.trim();
     if (!name) name = "MyConfig";
 
-    // Convert currentValues to formatted JSON
-    // If we need to mix with a raw template, we would Object.assign(template, currentValues) here
     const jsonStr = JSON.stringify(currentValues, null, 4);
 
-    // Create download link
     const blob = new Blob([jsonStr], { type: "application/json" });
     const url = URL.createObjectURL(blob);
 
     const a = document.createElement("a");
     a.href = url;
 
-    // Automatically select the correct file extension based on the external
     if (currentExternal.includes('beta')) {
         a.download = `${name}.json`;
     } else {
@@ -181,10 +164,8 @@ function exportConfig() {
     document.body.appendChild(a);
     a.click();
 
-    // Cleanup
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 }
 
-// Start app
 init();
