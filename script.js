@@ -155,10 +155,10 @@ function exportConfig() {
     const a = document.createElement("a");
     a.href = url;
 
-    if (currentExternal.includes('beta')) {
-        a.download = `${name}.json`;
-    } else {
+    if (currentExternal === 'matcha_beta') {
         a.download = `${name}.cfg`;
+    } else {
+        a.download = `${name}.json`;
     }
 
     document.body.appendChild(a);
