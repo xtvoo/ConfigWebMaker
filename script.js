@@ -5,6 +5,31 @@ const tabsButtons = document.querySelectorAll(".tab-btn");
 const currentTabTitle = document.getElementById("current-tab-title");
 const exportBtn = document.getElementById("export-btn");
 const configNameInput = document.getElementById("config-name");
+const presetBtns = document.querySelectorAll(".preset-btn");
+
+// Preset definitions map
+const presets = {
+    legit: {
+        aimbot_range: 100, fov: 55, smoothness_x: 22.0, smoothness_y: 22.0,
+        silent_fov: 45, silent_smoothing: 22.0, speed: false, fly: false,
+        noclip: false, triggerbot: false, esp_glow: false
+    },
+    semi_legit: {
+        aimbot_range: 154, fov: 120, smoothness_x: 18.0, smoothness_y: 18.0,
+        prediction_x: 13.5, prediction_y: 13.5, silent_fov: 110, silent_smoothing: 18.0,
+        speed: false, fly: false, noclip: false, triggerbot: false
+    },
+    rage: {
+        aimbot_range: 10000, fov: 1000, smoothness_x: 0, smoothness_y: 0,
+        silent_fov: 1000, silent_smoothing: 0, speed: true, speed_amount: 150,
+        fly: true, fly_amount: 50, noclip: true, triggerbot: true, triggerbot_delay_ms: 1,
+        esp_glow: true, box: true, name_esp: true
+    },
+    movement: {
+        speed: true, speed_amount: 350, fly: true, fly_amount: 100,
+        noclip: true, infjump: true, clicktp: true, desync: true
+    }
+};
 
 // Global state holding current values for the selected external
 let currentValues = {};
@@ -34,6 +59,22 @@ function init() {
 
     // Event Listener for export
     exportBtn.addEventListener("click", exportConfig);
+
+    // Event Listeners for presets
+    presetBtns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            const presetName = e.target.getAttribute("data-preset");
+            if (presets[presetName]) {
+                // Apply preset values over current ones
+                Object.keys(presets[presetName]).forEach(key => {
+                    if (currentValues[key] !== undefined) {
+                        currentValues[key] = presets[presetName][key];
+                    }
+                });
+                renderSettings();
+            }
+        });
+    });
 }
 
 // Load the schema for the selected external and set default values

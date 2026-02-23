@@ -3,14 +3,14 @@
     --bg-dark: #0f111a;
     --bg-panel: rgba(26, 29, 41, 0.7);
     --bg-glass: rgba(255, 255, 255, 0.05);
-    
+
     --accent: #5e6ad2;
     --accent-glow: rgba(94, 106, 210, 0.4);
     --accent-hover: #7b86e8;
-    
+
     --text-main: #f0f0f5;
     --text-dim: #9aa0a6;
-    
+
     --border-light: rgba(255, 255, 255, 0.08);
     --radius: 12px;
 }
@@ -126,6 +126,30 @@ select:focus {
     border-left-color: var(--accent);
 }
 
+.presets-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.preset-btn {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-light);
+    color: var(--text-main);
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.preset-btn:hover {
+    border-color: var(--accent);
+    background: rgba(94, 106, 210, 0.1);
+    transform: translateY(-1px);
+}
+
 .export-area {
     padding: 20px;
     border-top: 1px solid var(--border-light);
@@ -231,7 +255,10 @@ select:focus {
 .slider {
     position: absolute;
     cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: var(--border-light);
     transition: .4s;
     border-radius: 34px;
@@ -249,11 +276,11 @@ select:focus {
     border-radius: 50%;
 }
 
-input:checked + .slider {
+input:checked+.slider {
     background-color: var(--accent);
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
     transform: translateX(20px);
 }
 
@@ -285,7 +312,7 @@ input[type=range]::-webkit-slider-thumb {
     background: #fff;
     cursor: pointer;
     margin-top: -6px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 input[type=range]::-webkit-slider-runnable-track {
