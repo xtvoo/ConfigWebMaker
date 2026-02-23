@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConfigWebMaker | Setup Externals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <h2><span class="highlight">Config</span>WebMaker</h2>
+            </div>
+            
+            <div class="section">
+                <h3>Select External</h3>
+                <div class="custom-select">
+                    <select id="external-select">
+                        <option value="matcha_beta">Matcha (Beta)</option>
+                        <option value="matcha_normal">Matcha (Normal)</option>
+                        <!-- We will add more externals here as you send them -->
+                    </select>
+                </div>
+            </div>
+
+            <nav class="tabs">
+                <button class="tab-btn active" data-tab="aimbot">Aimbot / Combat</button>
+                <button class="tab-btn" data-tab="silentaim">Silent Aim</button>
+                <button class="tab-btn" data-tab="visuals">Visuals (ESP)</button>
+                <button class="tab-btn" data-tab="movement">Movement / Exploit</button>
+                <button class="tab-btn" data-tab="misc">Misc Settings</button>
+            </nav>
+
+            <div class="export-area">
+                <input type="text" id="config-name" placeholder="Name your config (e.g. Blatant)" value="MyConfig">
+                <button id="export-btn" class="primary-btn">Export .cfg</button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="topbar">
+                <h1 id="current-tab-title">Aimbot / Combat</h1>
+            </header>
+            
+            <div class="settings-container" id="settings-container">
+                <!-- UI elements will be injected here dynamically by script.js -->
+            </div>
+        </main>
+    </div>
+
+    <!-- The external schemas are defined in JS for now to make it easy to modify -->
+    <script src="schema.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
